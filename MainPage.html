@@ -1,0 +1,182 @@
+<!DOCTYPE html> 
+<html> 
+　<head> 
+	　 <title>首页</title> 
+	　 <meta name="viewport" content="width=device-width, initial-scale=1"> 
+	　 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	　 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	　
+	<script type="text/javascript">
+	$(document).bind("mobileinit", function(){   
+		$.mobile.defaultPageTransition = "slide"         
+		$.mobile.loadingMessage = "加载中...";
+		// $.mobile.page.prototype.options.backBtnText = "后退";
+		// $.mobile.page.prototype.options.addBackBtn= true ;
+		$.mobile.activeBtnClass="ui-btn-hover-a";
+	});  
+	</script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>	
+</head> 
+<body>
+	<div data-role="page" id="page1">
+
+		<div data-role="header" data-id="myHeader" data-position="fixed">
+			<h2>主 页 </h2>
+			<a class="ui-btn-right">联系我们</a>
+			<nav data-role="navbar" id="myNavbar">
+				<ul>
+					<li> <a href="#page1" class="ui-btn-active">分栏1</a></li>
+					<li> <a href="#page2">分栏2</a></li>
+					<li> <a href="#page3">分栏3</a></li>
+				</ul>
+			</nav>
+		</div>
+		<!-- /header -->
+		<div data-role="content"> 
+			<ul data-role="listview" data-split-icon="gear">
+				<li>
+					<a href="#page2">
+						<img src="../images/Snikt.png" />
+						<h3>Broken Bells</h3>
+						<p>Broken Bells</p>
+					</a>
+					<a href="#"></a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="../images/Snikt.png"/>
+						<h3>Warning</h3>
+						<p>Hot Chip</p>
+					</a>
+					<a href="#"></a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="../images/Snikt.png" />
+						<h3>Wolfgang Amadeus Phoenix</h3>
+						<p>Phoenix</p>
+					</a>
+					<a href="#"></a>
+				</li>
+			</ul>
+		</div>
+		<!-- /content -->
+		<div data-role="footer" data-id="myFooter" data-position="fixed">
+			<h1>Footer</h1>
+			<!-- <div data-role="navbar" data-iconpos="top"> 
+				<ul>
+					<li> <a href="#" class="ui-btn-active" data-icon="gear"></a></li>
+					<li> <a href="#" data-transition="fade" data-icon="plus"></a></li>
+					<li> <a href="#" data-transition="fade" data-icon="star"></a></li>
+				</ul>
+			</div> -->
+		</div>
+		<!-- /footer -->
+	</div><!-- /page -->
+	<section id="page2" data-role="page">
+		<header data-role="header" data-id="myHeader" data-position="fixed">
+			<h1>主 页</h1>
+			<nav data-role="navbar" id="myNavbar" data-theme="b">
+				<ul>
+					<li> <a href="#page1">分栏1</a></li>
+					<li> <a href="#page2" class="ui-btn-active">分栏2</a></li>
+					<li> <a href="#page3">分栏3</a></li>
+				</ul>
+			</nav>
+		</header><!-- /header -->
+		<article data-role="content">
+			<p>Content2</p>
+		</article><!-- /content -->
+		<footer data-role="footer" data-id="myFooter" data-position="fixed">
+			<h1>Footer</h1>
+		</footer><!-- /footer -->
+	</section><!-- /page -->
+
+	<section id="page3" data-role="page">
+		<header data-role="header" data-id="myHeader" data-position="fixed">
+			<h1>主 页</h1>
+			<nav data-role="navbar" id="myNavbar" data-theme="b">
+				<ul>
+					<li> <a href="#page1">分栏1</a></li>
+					<li> <a href="#page2">分栏2</a></li>
+					<li> <a href="#page3" class="ui-btn-active">分栏3</a></li>
+				</ul>
+			</nav>
+		</header><!-- /header -->
+		<article data-role="content">
+			<p>Content3</p>
+		</article><!-- /content -->
+		<footer data-role="footer" data-id="myFooter" data-position="fixed">
+			<h1>Footer</h1>
+		</footer><!-- /footer -->
+	</section><!-- /page -->
+
+	<script>
+ 	/*
+ 	 实现navbar分栏的滑动跳转页面，左划为上一页，又划为下一页，到尾页时跳转到头一页
+ 	 动态获取页数
+ 	 当前页高亮显示
+ 	 */
+ 	 (function($) {
+ 	 	var methods = {
+ 	 		init : function(options) {
+ 	 			var settings = {
+ 	 				callback: function() {}
+ 	 			};
+ 	 			if ( options ) {
+ 	 				$.extend( settings, options );
+ 	 			}
+
+ 	 			var pageCount = $(":jqmData(role='page')").length;
+ 	 			var currentPage = 0;
+ 	 			$(":jqmData(role='page')").each(function() {
+ 	 				$(this).bind("swiperight", function() {
+
+          // Get the current page number from the id and increment it by 1.
+          currentPage = parseInt($(this).attr("id").split("page")[1]);
+          var nextPage = currentPage +1;
+          if (nextPage > pageCount) nextPage = 1;
+
+          // Transition the page.
+          $.mobile.changePage("#page"+nextPage);
+
+      });
+ 	 				$(this).bind("swipeleft", function() {
+
+          // Get the current page number from the id and decrement it by 1.
+          currentPage = parseInt($(this).attr("id").split("page")[1]);
+          var nextPage = currentPage -1;
+          if (nextPage === 0) nextPage = pageCount;
+
+          // Transition the page.
+          $.mobile.changePage("#page"+nextPage);
+      });
+
+ 	 				// $(this).bind("pagecreate", function(event){ 	
+ 	 				// 	$("#myNavbar li:eq(" + currentPage+ ")").addClass("ui-btn-active");
+ 	 				// });
+
+ 	 			})
+
+ 	 		}
+ 	 	}
+
+ 	 	$.fn.initApp = function(method) {
+    // Method calling logic
+    if ( methods[method] ) {
+    	return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+    } else if ( typeof method === 'object' || ! method ) {
+    	return methods.init.apply( this, arguments );
+    } else {
+    	$.error( 'Method ' +  method + ' does not exist' );
+    } 
+}
+})(jQuery);
+
+$(document).ready(function() {
+	$().initApp();
+})
+</script>
+
+</body>
+</html>
