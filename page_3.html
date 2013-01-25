@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>首 页</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta charset="GBK">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+	$(document).bind("mobileinit", function(){   
+		$.mobile.defaultPageTransition = "slide";         
+		$.mobile.loadingMessage = "加载中...";
+			// $.mobile.page.prototype.options.backBtnText = "后退";
+			// $.mobile.page.prototype.options.addBackBtn= true ;
+			$.mobile.activeBtnClass="ui-btn-hover-a";
+		});  
+	</script>
+	
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+	<script src="js/swipePageExtent.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$().initApp();
+		$("a").attr("rel", "external");
+	});
+	</script>
+</head> 
+<body>
+	<div data-role="page" id="page_3">
+
+		<div data-role="header" data-id="myHeader" data-position="fixed">
+			<h2>首 页</h2>
+			<a class="ui-btn-right">联系我们</a>
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li> <a href="page_1.html" >分栏1</a></li>
+					<li> <a href="page_2.html">分栏2</a></li>
+					<li> <a href="page_3.html" class="ui-btn-active">分栏3</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /header -->
+		<div data-role="content"> 
+
+		</div>
+		<!-- /content -->
+		<div data-role="footer" data-id="myFooter" data-position="fixed">
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li> <a href="page_1.html" data-icon="delete">删除</a></li>
+					<li> <a href="page_2.html" data-icon="Plus">增加</a></li>
+					<li> <a href="page_3.html" data-icon="Grid" class="ui-btn-active">更多</a></li>
+				</ul>
+			</div>
+		</div> 
+		<!-- /footer -->
+	</div><!-- /page -->
+</body>
+</html>
