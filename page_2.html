@@ -9,7 +9,6 @@
 	<script type="text/javascript">
 	$(document).bind("mobileinit", function(){   
 		$.mobile.defaultPageTransition = "slide";         
-		$.mobile.loadingMessage = "加载中...";
 			// $.mobile.page.prototype.options.backBtnText = "后退";
 			// $.mobile.page.prototype.options.addBackBtn= true ;
 			$.mobile.activeBtnClass="ui-btn-hover-a";
@@ -20,14 +19,16 @@
 
 	<script src="js/swipePageExtent.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$().initApp();
-		$("a").attr("rel", "external");
-	});
+	// $(document).ready(function() {
+	// 	$().initApp();
+	// });
+	 $(document).bind("pagebeforecreate", function(){
+	 	$().initApp();
+	 });
 	</script>
 </head> 
 <body>
-	<div data-role="page" id="page_2">
+	<div data-role="page" id="page_2" >
 
 		<div data-role="header" data-id="myHeader" data-position="fixed">
 			<h2>首 页</h2>
@@ -42,7 +43,7 @@
 		</div>
 		<!-- /header -->
 		<div data-role="content"> 
-
+<h2>  content 2</h2>
 		</div>
 		<!-- /content -->
 		<div data-role="footer" data-id="myFooter" data-position="fixed">
@@ -50,7 +51,7 @@
 				<ul>
 					<li> <a href="page_1.html" data-icon="delete">删除</a></li>
 					<li> <a href="page_2.html" data-icon="Plus" class="ui-btn-active">增加</a></li>
-					<li> <a href="page_3.html"  data-icon="Grid">更多</a></li>
+					<li> <a href="page_3.html" data-icon="Grid">更多</a></li>
 				</ul>
 			</div>
 		</div> 

@@ -18,31 +18,34 @@
 
      //遍历header->navba->a->href的值
      var pagePathList = [];
-     $(":jqmData(role='header') :jqmData(role='navbar') a").each(function(index){
-      pagePathList.push($(this).attr("href"));
-    })
+     /*
+     jqm加载页面的方式采用ajax加载模式,加载多个页面后header会有多个
+     */  
+      $(":jqmData(role='header'):first :jqmData(role='navbar') a").each(function(index){
+        pagePathList.push($(this).attr("href"));
+      });
      var pageCount = pagePathList.length;
      var currentPage = 0;
          // page_id若以#开始，则为page的id， 否则为相对路径需要加载html后缀
          $(":jqmData(role='page')").each(function() {
-           $(this).bind("swiperight", function() {
 
+           $(this).on("swiperight", function() {
           // Get the current page number from the id and increment it by 1.
           // 页面文件名和页面ID的前缀必须一样
           var currentPageName = $(this).attr("id") + ".html";
           currentPage = jQuery.inArray(currentPageName, pagePathList);
 
           var nextPage = currentPage +1;
-          if (nextPage > pageCount) {
-            nextPage = 1;
+          if (nextPage >= pageCount) {
+            nextPage = 0;
           }
           var nextPagePath = pagePathList[nextPage];
           // Transition the page.
-
           $.mobile.changePage(nextPagePath);
+           return false;
         });
 
-           $(this).bind("swipeleft", function() {
+           $(this).on("swipeleft", function() {
 
           // Get the current page number from the id and decrement it by 1.
           var currentPageName = $(this).attr("id") + ".html";
@@ -53,7 +56,7 @@
           }
           var prePagePath = pagePathList[prePage];
           $.mobile.changePage(prePagePath);
-
+          return false;
         });
 
          })

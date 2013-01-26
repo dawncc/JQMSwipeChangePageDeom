@@ -9,7 +9,7 @@
 	　
 	<script type="text/javascript">
 	$(document).bind("mobileinit", function(){   
-		$.mobile.defaultPageTransition = "slide"         
+		$.mobile.defaultPageTransition = "slide";        
 			// $.mobile.page.prototype.options.backBtnText = "后退";
 			// $.mobile.page.prototype.options.addBackBtn= true ;
 			$.mobile.activeBtnClass="ui-btn-hover-a";
@@ -21,9 +21,7 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$().initApp({
-			page_id: "#page",
-		});
+		$().initApp();
 	});
 	</script>
 
@@ -110,7 +108,7 @@
 				<ul>
 					<li> <a href="#page_1">分栏1</a></li>
 					<li> <a href="#page_2">分栏2</a></li>
-					<li> <a href="#page_3" class="ui-btn-active">分栏3</a></li>
+					<li> <a href="page_1.html" rel="external" class="ui-btn-active">分栏3</a></li>
 				</ul>
 			</nav>
 		</header><!-- /header -->

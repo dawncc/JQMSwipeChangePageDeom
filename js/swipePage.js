@@ -9,47 +9,51 @@
  	 	var methods = {
  	 		init : function(options) {
  	 			var settings = {
-          page_id : "page_",
           callback: function() {},
         };
         if ( options ) {
          $.extend( settings, options );
        }
+       $(":jqmData(role='page')").each(function() {
+        var currentPage = $(this);
+        currentPage.bind("swiperight", function() {
 
-       var pageCount = $(":jqmData(role='page')").length;
-       var currentPage = 0;
-         // page_id若以#开始，则为page的id， 否则为相对路径需要加载html后缀
-        $(":jqmData(role='page')").each(function() {
-         $(this).bind("swiperight", function() {
-
-          // Get the current page number from the id and increment it by 1.
-          currentPage = parseInt($(this).attr("id").split("_")[1]);
-          var nextPage = currentPage +1;
-          if (nextPage > pageCount) nextPage = 1;
-
-          // Transition the page.
-
-
-          $.mobile.changePage(options.page_id+"_"+nextPage);
+          // // Get the current page number from the id and increment it by 1.
+          // currentPage = parseInt(currentPage.attr("id").split("_")[1]);
+          // var nextPage = currentPage +1;
+          // if (nextPage > pageCount) nextPage = 1;
+          // $.mobile.changePage(options.page_id+"_"+nextPage);
+          var nextPage = currentPage.next(":jqmData(role=page)");
+          if(!nextPage.length)
+          {
+            nextPage = $(":jqmData(role='page'):first");
+          }
+          $.mobile.changePage(nextPage);
 
         });
-         $(this).bind("swipeleft", function() {
+        currentPage.bind("swipeleft", function() {
 
           // Get the current page number from the id and decrement it by 1.
-          currentPage = parseInt($(this).attr("id").split("_")[1]);
-          var nextPage = currentPage -1;
-          if (nextPage === 0) nextPage = pageCount;
+          // currentPage = parseInt(currentPage.attr("id").split("_")[1]);
+          // var nextPage = currentPage -1;
+          // if (nextPage === 0) nextPage = pageCount;
+          //  $.mobile.changePage(options.page_id+ "_"+nextPage);
+          var prePage = currentPage.prev(":jqmData(role=page)");
+          if(!prePage.length)
+          {
+            prePage = $(":jqmData(role='page'):last");
+          }
 
-          // Transition the page.
-          $.mobile.changePage(options.page_id+ "_"+nextPage);
+          $.mobile.changePage(prePage);
+
         });
 
-       })
+      })
 
-      }
-    }
+}
+}
 
-    $.fn.initApp = function(method) {
+$.fn.initApp = function(method) {
 
     // Method calling logic
     if ( methods[method] ) {

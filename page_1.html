@@ -4,12 +4,11 @@
 	<title>首 页</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<meta charset="GBK">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript">
 	$(document).bind("mobileinit", function(){   
 		$.mobile.defaultPageTransition = "slide";         
-		$.mobile.loadingMessage = "加载中...";
 			// $.mobile.page.prototype.options.backBtnText = "后退";
 			// $.mobile.page.prototype.options.addBackBtn= true ;
 			$.mobile.activeBtnClass="ui-btn-hover-a";
@@ -20,10 +19,12 @@
 
 	<script src="js/swipePageExtent.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$().initApp();
-		$("a").attr("rel", "external");
-	});
+	// $(document).ready(function() {
+	// 	$().initApp();
+	// });
+	 $(document).bind("pagebeforecreate", function(){
+	 	$().initApp();
+	 });
 	</script>
 </head> 
 <body>
@@ -42,7 +43,7 @@
 		</div>
 		<!-- /header -->
 		<div data-role="content"> 
-
+			<h2>  content 1</h2>
 		</div>
 		<!-- /content -->
 		<div data-role="footer" data-id="myFooter" data-position="fixed">
