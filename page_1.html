@@ -12,6 +12,8 @@
 			// $.mobile.page.prototype.options.backBtnText = "后退";
 			// $.mobile.page.prototype.options.addBackBtn= true ;
 			$.mobile.activeBtnClass="ui-btn-hover-a";
+			// $.mobile.loadPage( pageUrl, { showLoadMsg: false } );
+			$.mobile.page.prototype.options.domCache = true;//在dom中缓存pagent 1
 		});  
 	</script>
 	
@@ -19,25 +21,25 @@
 
 	<script src="js/swipePageExtent.js"></script>
 	<script type="text/javascript">
-	// $(document).ready(function() {
-	// 	$().initApp();
-	// });
-	 $(document).bind("pagebeforecreate", function(){
-	 	$().initApp();
-	 });
+	$(document).ready(function() {
+		$().initApp();
+	});
+	 // $(document).bind("pagebeforecreate", function(){
+	 // 	$().initApp();
+	 // });
 	</script>
 </head> 
 <body>
-	<div data-role="page" id="page_1" >
+	<div data-role="page" id="page_1"  >
 
 		<div data-role="header" data-id="myHeader" data-position="fixed">
 			<h2>首 页</h2>
 			<a class="ui-btn-right">联系我们</a>
 			<div data-role="navbar" data-iconpos="top">
 				<ul>
-					<li> <a href="page_1.html" class="ui-btn-active">分栏1</a></li>
-					<li> <a href="page_2.html" >分栏2</a></li>
-					<li> <a href="page_3.html" >分栏3</a></li>
+					<li> <a href="page_1.html" class="ui-btn-active" data-prefetch>分栏1</a></li>
+					<li> <a href="page_2.html" data-prefetch>分栏2</a></li>
+					<li> <a href="page_3.html" data-prefetch>分栏3</a></li>
 				</ul>
 			</div>
 		</div>
