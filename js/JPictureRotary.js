@@ -5,7 +5,7 @@
 	//初始化全局变量
 	var defaults = {
 		auto : true, //是否自动轮转
-		delay: 5,	//每张图片停留时间
+		delay: 3,	//每张图片停留时间
 		animationSpeed: "normal", //动画切换速度
 		statue_contrls: true, //是否显示园点
 		boucles: 0,
@@ -19,7 +19,7 @@
 	/*
 	遍历对象节点下的所有元素
 	*/
-	this.each(function(){
+	// this.each(function(event){
 		
 		if($("li", diapo).length > 1){
 			/*
@@ -36,14 +36,13 @@
 		/*
 		划屏浏览图片
 		*/
-		diapo.parent().bind("swipeleft", function(options)
+		$(document).on("swipeleft",".JPictureRotary", function(options, event)
 		{
 			prev();
 			return false; //取消冒泡
 		});
 
-
-		diapo.parent().bind("swiperight", function(options)
+		$(document).on("swiperight", ".JPictureRotary", function(options, event)
 		{
 			next();
 			return false;
@@ -92,53 +91,53 @@
 	// var bulletCount = $(".JPictureRotary li").length;
 	// //  100 - (8*n+ 6)/2	
 	//  $(".JPictureRotary_status", diapo.parent()).css("margin-left", 50-(bulletCount-1)*4+"%");
-	 $(".JPictureRotary_status", diapo.parent()).css("margin-left", -($(".JPictureRotary_status", diapo.parent()).width()/2));
+	$(".JPictureRotary_status", diapo.parent()).css("margin-left", -($(".JPictureRotary_status", diapo.parent()).width()/2));
 
 
-	 function nextImage(options, elt)
-	 {
-	 	clearInterval(inter);
+	function nextImage(options, elt)
+	{
+		clearInterval(inter);
 
-	 	$("li.active", diapo).fadeOut(options.animationSpeed).removeClass("active");
-	 	$(".JPictureRotary_status a", diapo.parent()).removeClass("active");
+		$("li.active", diapo).fadeOut(options.animationSpeed).removeClass("active");
+		$(".JPictureRotary_status a", diapo.parent()).removeClass("active");
 
-	 	id = elt.attr("id").split("_")[2];
-	 	$("li#JPictureRotary_image_"+id, diapo).addClass("active").fadeIn(options.animationSpeed);
+		id = elt.attr("id").split("_")[2];
+		$("li#JPictureRotary_image_"+id, diapo).addClass("active").fadeIn(options.animationSpeed);
 
-	 	$("#JPictureRotary_bullet_"+id, diapo.siblings()).addClass("active");
+		$("#JPictureRotary_bullet_"+id, diapo.siblings()).addClass("active");
 
-	 	if(options.boucles == 0 || (options.boucles > 0 && (diapo.data("current_slide")/diapo.children().length) < options.boucles ))
-	 		inter = setInterval(function(){displayDiaporama(options)}, (options.delay*1000));
-	 	else
-	 		$(".pause", diapo.siblings()).remove();
+		if(options.boucles == 0 || (options.boucles > 0 && (diapo.data("current_slide")/diapo.children().length) < options.boucles ))
+			inter = setInterval(function(){displayDiaporama(options)}, (options.delay*1000));
+		else
+			$(".pause", diapo.siblings()).remove();
 
-	 }
+	}
 
-	 function displayDiaporama(options)
-	 {
-	 	current_slide++;
-	 	diapo.data("current_slide", current_slide);
-	 	next();
-	 }
+	function displayDiaporama(options)
+	{
+		current_slide++;
+		diapo.data("current_slide", current_slide);
+		next();
+	}
 
-	 function next()
-	 {
+	function next()
+	{
 
-	 	if(!$("li.active", diapo).is(":last-child"))
-	 		elt =  $("li.active", diapo).next();
-	 	else
-	 		elt =  $("li:first-child", diapo);
-	 	nextImage(options, elt);
-	 }
+		if(!$("li.active", diapo).is(":last-child"))
+			elt =  $("li.active", diapo).next();
+		else
+			elt =  $("li:first-child", diapo);
+		nextImage(options, elt);
+	}
 
-	 function prev()
-	 {
-	 	if(!$("li.active", diapo).is(":first-child"))
-	 		elt =  $("li.active", diapo).prev();
-	 	else
-	 		elt =  $("li:last-child", diapo);
-	 	nextImage(options, elt);
-	 }
+	function prev()
+	{
+		if(!$("li.active", diapo).is(":first-child"))
+			elt =  $("li.active", diapo).prev();
+		else
+			elt =  $("li:last-child", diapo);
+		nextImage(options, elt);
+	}
 
 	// function resize() {       
 	// 	var newWidth = $(window).width();
@@ -147,7 +146,7 @@
 
 	// $(window).resize(resize);
 }
-});
+// });
 	return this;
 
 };

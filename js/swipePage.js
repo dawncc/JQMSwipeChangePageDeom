@@ -16,7 +16,7 @@
        }
        $(":jqmData(role='page')").each(function() {
         var currentPage = $(this);
-        currentPage.bind("swiperight", function() {
+        currentPage.on("swiperight", function() {
 
           // // Get the current page number from the id and increment it by 1.
           // currentPage = parseInt(currentPage.attr("id").split("_")[1]);
@@ -29,9 +29,9 @@
             nextPage = $(":jqmData(role='page'):first");
           }
           $.mobile.changePage(nextPage);
-
+          return false;
         });
-        currentPage.bind("swipeleft", function() {
+        currentPage.on("swipeleft", function() {
 
           // Get the current page number from the id and decrement it by 1.
           // currentPage = parseInt(currentPage.attr("id").split("_")[1]);
@@ -45,7 +45,7 @@
           }
 
           $.mobile.changePage(prePage);
-
+          return false;
         });
 
       })

@@ -58,9 +58,8 @@
         //   return false;
         // });
 // $(":jqmData(role='page')").each(function() {
-  var page =$("body");
   var currentPage = $(":jqmData(role='page')");
-  page.on("swiperight", function() {
+  $(document).on("swiperight", "body",function(event) {
     // var nextPage = currentPage.next(":jqmData(role=page)");
     // if(!nextPage.length)
     // {
@@ -73,9 +72,10 @@
     }else{
      $.mobile.changePage($(":jqmData(role='page'):first"));
    }
-   
+   // event.stopPropagation();
+   return false;
  });
-  page.on("swipeleft", function() {
+  $(document).on("swipeleft","body", function(event) {
     // var prePage = currentPageName.prev(":jqmData(role=page)");
     // if(!prePage.length)
     // {
@@ -89,6 +89,7 @@
     }else{
      $.mobile.changePage($(":jqmData(role='page'):last"));
    }
+   return false;
  });
 // });
 }
