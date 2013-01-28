@@ -1,0 +1,50 @@
+.JPictureRotary{
+  position:relative;
+}
+
+.JPictureRotary ul{
+  -moz-box-shadow:1px 1px 0.5em #222;
+  overflow:hidden;
+}
+
+.JPictureRotary li{
+  list-style-type:none;
+  overflow:hidden;
+  position:absolute;
+  top: 0; right: 0;
+  /*float: left;*/
+  width: 100%;
+  height: 97%;
+}
+
+.JPictureRotary li img{
+  display:block; 
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+/**** Status ****/
+
+.JPictureRotary_status{
+  text-align:center;
+  position:absolute;
+  left: 50%;
+  display:none
+}
+
+.JPictureRotary_status a{
+  background:url(img/bullets.png) no-repeat left;
+  _background:url(img/bullets.gif) no-repeat left;
+  float:left;
+  width:10px;
+  height: 10px;
+  text-indent:-9999px;
+  margin-right:5px;
+}
+
+.JPictureRotary_status a.active, .JPictureRotary_status a:hover{
+  background:url(img/bullets.png) no-repeat right;
+  _background:url(img/bullets.gif) no-repeat right;
+}
