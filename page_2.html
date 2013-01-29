@@ -4,24 +4,11 @@
 	<title>首 页</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<meta charset="GBK">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-
-	<script src="js/swipePageExtent.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$().initApp();
-	});
-	 // $(document).bind("pagebeforecreate", function(){
-	 // 	$().initApp();
-	 // });
-</script>
 </head> 
 <body>
 	<div data-role="page" id="page_2" >
 
-		<div data-role="header" data-id="myHeader" data-position="fixed">
+		<div data-role="header" data-id="myHeader"  data-position="fixed">
 			<h2>首 页</h2>
 			<a class="ui-btn-right">联系我们</a>
 			<div data-role="navbar" data-iconpos="top">
@@ -35,8 +22,26 @@
 		<!-- /header -->
 		<div data-role="content"> 
 
-
-
+			<ul data-role="listview" data-inset="true">
+				<li>
+					<a href="page_1.html">
+						<h3>Broken Bells</h3>
+						<p>Broken Bells</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<h3>Warning</h3>
+						<p>Hot Chip</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<h3>Wolfgang Amadeus Phoenix</h3>
+						<p>Phoenix</p>
+					</a>
+				</li>
+			</ul>
 		</div>
 		<!-- /content -->
 		<div data-role="footer" data-id="myFooter" data-position="fixed">

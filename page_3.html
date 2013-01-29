@@ -4,19 +4,6 @@
 	<title>首 页</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<meta charset="GBK">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-
-	<script src="js/swipePageExtent.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$().initApp();
-	});
-	 // $(document).bind("pagebeforecreate", function(){
-	 // 	$().initApp();
-	 // });
-</script>
 </head> 
 <body>
 	<div data-role="page" id="page_3" >
@@ -34,7 +21,43 @@
 		</div>
 		<!-- /header -->
 		<div data-role="content"> 
-			<h2>  content 3</h2>
+			<ul data-role="listview" id="Gallery">
+				<li>
+					<span> 
+						<a href="img/a.jpg" data-ajax="false">
+							<img src="img/a.jpg" alt="img01"/>
+						</a>
+					</span>
+				</li>
+				<li>
+					<span>
+						<a href="img/c.jpg" data-ajax="false">
+							<img src="img/c.jpg" alt="img02"/>
+						</a>
+					</span>
+				</li>
+				<li>
+					<span>
+						<a href="img/e.jpg" data-ajax="false">
+							<img src="img/e.jpg" alt="img03"/>
+						</a>
+					</span>
+				</li>
+				<li>
+					<span>
+						<a href="img/d.jpg" data-ajax="false">
+							<img src="img/d.jpg" alt="img04"/>
+						</a>
+					</span>
+				</li>
+				<li>
+					<span>
+						<a href="img/b.jpg" data-ajax="false">
+							<img src="img/b.jpg" alt="img05"/>
+						</a>
+					</span>
+				</li>
+			</ul>
 		</div>
 		<!-- /content -->
 		<div data-role="footer" data-id="myFooter" data-position="fixed">
